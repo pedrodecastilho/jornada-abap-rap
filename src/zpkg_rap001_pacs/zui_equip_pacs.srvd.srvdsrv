@@ -1,0 +1,4 @@
+@EndUserText.label: 'Serviço para Equipamentos'
+define service ZUI_EQUIP_PACS {
+  expose ZC_EQUIP_PACS as Equipment;
+}
