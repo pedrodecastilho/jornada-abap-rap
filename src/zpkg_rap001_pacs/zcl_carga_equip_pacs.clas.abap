@@ -10,7 +10,10 @@ CLASS zcl_carga_equip_pacs DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_carga_equip_pacs IMPLEMENTATION.
+
+CLASS ZCL_CARGA_EQUIP_PACS IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     " Cria uma tabela interna que irá receber os dados
     DATA: it_equip TYPE TABLE OF ztb_equip_pacs.

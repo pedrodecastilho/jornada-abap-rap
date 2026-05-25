@@ -1,0 +1,33 @@
+managed implementation in class zbp_i_equip_pacs unique;
+strict ( 2 );
+
+define behavior for ZI_EQUIP_PACS alias Equipment
+persistent table ztb_equip_pacs // O RAP precisa saber onde gravar os dados
+lock master // Gerencia os bloqueios automaticamente
+authorization master ( instance )
+// Define os campos que serão atualizados automaticamente
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) EquipId; // O RAP gera o UUID automaticamente!
+
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy, LocalLastChangedAt;
+
+  // Mapeamento: Ensina o RAP a ligar os nomes CamelCase da CDS com os campos da tabela física
+  mapping for ztb_equip_pacs
+  {
+    EquipId = equip_id;
+    EmployeeName = employee_name;
+    EquipType = equip_type;
+    SerialNumber = serial_number;
+    Status = status;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
